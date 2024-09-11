@@ -5,14 +5,16 @@ public class App {
         Scanner in = new Scanner(System.in);
         Random random = new Random ();
         String answer = "";
+        int money = 5;
+        
 
-        System.out.println("Shall we play a game of slots?");
+        System.out.println("Shall we play a game of slots? Starting money is " + money + ".");
         System.out.println("Yes/No");
         answer = in.nextLine();
 
-        if (answer.equalsIgnoreCase("Yes"))
+        if (answer.equalsIgnoreCase("Yes") && money >=1)
         {
-        do {
+        do {    
                 int randomNumber1 = random.nextInt(10) + 1;
                 int randomNumber2 = random.nextInt(10) + 1;
                 int randomNumber3 = random.nextInt(10) + 1;
@@ -24,32 +26,44 @@ public class App {
                 System.out.println(randomNumber3);
 
                     // Checking if there is a winning combination
-                    if (randomNumber1 == 7 && randomNumber2 == 7 && randomNumber3 == 7)
+                    int reward = 0;
+                    if (randomNumber1 == 7) reward++;
+                    if (randomNumber2 == 7) reward++;
+                    if (randomNumber3 == 7) reward++;
+
+                    if (reward == 3)
                     {
+                    money += 27;
                     System.out.println("JACKPOT");  
                     }
-                    else if (randomNumber1 == 7 && randomNumber2 == 7 || randomNumber2 == 7 && randomNumber3 ==7 || randomNumber1 == 7 && randomNumber3 == 7)
+                    else if (reward == 2)
                     {
+                    money += 9;
                     System.out.println("You've won Double!");
                     }
-                    else if (randomNumber1 == 7 || randomNumber2 == 7 || randomNumber3 == 7)
+                    else if (reward ==1)
                     {
+                    money += 3;
                     System.out.println("You've won!");
                     }
                     else
                     {
                     System.out.println("You've lost!");
                     }
+                    money--;
+                    System.out.println("You have " + money + " money left!");
+
+                    if (money <= 0)
+                    {
+                        System.out.println("You ran out of money! Unlucky!");
+                        break;
+                    }
                     System.out.println("Play again? Yes/No");
                     answer = in.nextLine();
             }
-                    while (answer.equalsIgnoreCase("Yes"));
-                    System.out.println("Have a nice day!");
-        }    
-    else
-    {
-    System.out.println("Have a nice day!");
-    }
-in.close();
+                    while (answer.equalsIgnoreCase("Yes"));     //End of the do loop.
+        }                                                       // Closing the IF statement.
+                    System.out.println("Have a nice day!");     // Ending message and closing the scanner.
+                    in.close();
     }
 }
