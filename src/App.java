@@ -22,6 +22,7 @@ public class App {
         System.out.println("How much money would you like to bet?");
         String bet = in.nextLine();
         
+        //Should use "try and catch" to verify that user inputs a numeric value. The user isn't worthy to gamble if they aren't capable of that. So we're skipping that.
         if (bet.isEmpty())
             {
             System.out.println("Invalid number, setting money to 5");
