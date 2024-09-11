@@ -12,6 +12,13 @@ public class App {
         System.out.println("Press enter or type " + "no.");
         answer = in.nextLine();
 
+        if (answer.equalsIgnoreCase("no") || answer.equalsIgnoreCase("n"))
+            {
+                System.out.println("Have a nice day!");
+                in.close();
+                return;
+            }
+
         System.out.println("How much money would you like to bet?");
         String bet = in.nextLine();
         
