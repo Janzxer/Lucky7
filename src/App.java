@@ -9,10 +9,10 @@ public class App {
         
 
         System.out.println("Shall we play a game of slots? Starting money is " + money + ".");
-        System.out.println("Yes/No");
+        System.out.println("Press enter or type " + "no.");
         answer = in.nextLine();
 
-        if (answer.equalsIgnoreCase("Yes") && money >=1)
+        if (answer.isEmpty() || answer.equalsIgnoreCase("Yes") && money >=1)
         {
         do {    
                 int randomNumber1 = random.nextInt(10) + 1;
@@ -34,17 +34,20 @@ public class App {
                     if (reward == 3)
                     {
                     money += 27;
-                    System.out.println("JACKPOT");  
+                    System.out.println("JACKPOT");
+                    reward = 0;  
                     }
                     else if (reward == 2)
                     {
                     money += 9;
                     System.out.println("You've won Double!");
+                    reward = 0;
                     }
                     else if (reward ==1)
                     {
                     money += 3;
                     System.out.println("You've won!");
+                    reward = 0;
                     }
                     else
                     {
@@ -58,10 +61,10 @@ public class App {
                         System.out.println("You ran out of money! Unlucky!");
                         break;
                     }
-                    System.out.println("Play again? Yes/No");
+                    System.out.println("Play again? Press enter or type " + "no.");
                     answer = in.nextLine();
             }
-                    while (answer.equalsIgnoreCase("Yes"));     //End of the do loop.
+                    while (answer.equalsIgnoreCase("Yes") || answer.isEmpty());     //End of the do loop.
         }                                                       // Closing the IF statement.
                     System.out.println("Have a nice day!");     // Ending message and closing the scanner.
                     in.close();
