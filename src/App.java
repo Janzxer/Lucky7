@@ -89,7 +89,7 @@ public class App {
                         {
                         System.out.println("You've lost!");
                         }
-                    money--;
+                        money--;
 
             //Notifying the user how much money they have left, and breaking the loop if money reaches 0
             System.out.println("You have " + money + " money left!");
